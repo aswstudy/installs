@@ -1,0 +1,23 @@
+# Jenkins, maven and ansible integration.
+
+steps
+on jenkins, maven already installed as a plugin. ---> cd/var/lib/jenkins/tools/
+install ansible --->sudo yum install ansible -y
+install ansible plugins on jenkins, go to global conf to include the executable path of ansible "usr/bin/"
+
+
+Then a declarative pipeline.
+
+Pipeline{
+     agent any
+     
+    stages{   
+        stage('SCM'){
+        }
+        
+    }
+}
+
+
+
+
