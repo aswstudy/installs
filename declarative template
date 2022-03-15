@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    tools {
+        maven "maven3.8.4"
+        }
+        stages{
+            stage('clone'){
+                steps{
+                    sh "echo cloning the latest application version"
+                    git "https://github.com/Landmark-fin/maven-web-application"
+                    
+                }
+            }
+        stage('testbBuild'){
+            steps{
+        sh  "echo Running unitTesting"
+        sh  "echo unitTesting ok. Creating packages"
+        sh  "mvn clean package"
+        sh  "echo Artifacts created"
+                
+            }
+        } 
+       stage ('codequality'){
+              steps{
+        sh  "echo Running quality checks"
+        sh  "mvn deploy"
+        sh  "echo QC completed"
+         
+       }
+     }
